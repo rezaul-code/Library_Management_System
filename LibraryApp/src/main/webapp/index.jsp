@@ -13,13 +13,20 @@
 </header>
 
 <main class="home-content">
+
+
     <section class="welcome-section">
         <h2>Welcome to the Library Management System</h2>
         <p>Please choose an option below:</p>
+       
         <div class="action-buttons">
-            <a href="login.jsp" class="btn">Log In</a>
-            <a href="register.jsp" class="btn btn-secondary">Sign Up</a>
+        
+            <a href="login" class="btn">Log In</a>
+            <a href="signup" class="btn">Sign Up</a>
+        
         </div>
+        
+        
     </section>
 </main>
 
