@@ -2,11 +2,56 @@ package com.service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.database_connection.DatabaseConnection;
 
 public class DBService {
+	
+public String adminlogInService(String name, String pass) {
+		
+		String name1 = null;
+		Connection connection = DatabaseConnection.getConnection();
+	    String user_check = QueryClass.user_check_query;
+	    
+		try {
+			PreparedStatement ps = connection.prepareStatement(user_check);
+			ps.setString(1, name);
+			ps.setString(2, pass);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				name1 = rs.getString("username");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	    return name1;
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	public int addUser(SetterGetterService sg1) {

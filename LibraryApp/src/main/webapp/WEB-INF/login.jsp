@@ -28,7 +28,7 @@
   			<br>
   			<button type="submit" >Submit</button>
   			<br>
-  			${error}
+  			${msg}
   			
   			</form>
   		
