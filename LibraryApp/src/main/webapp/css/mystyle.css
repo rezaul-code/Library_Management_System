@@ -61,6 +61,14 @@ body {
     margin: 10px 0 30px;
     color: #666;
 }
+.adminD-section{
+	 text-align: center;
+    max-width: 700px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.1);
+}
 
 /* Buttons */
 .action-buttons {
@@ -90,3 +98,4 @@ body {
 .btn-secondary:hover {
     background-color: #495057;
 }
+

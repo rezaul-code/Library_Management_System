@@ -13,7 +13,24 @@
 </header>
 
 <main class="home-content">
-
+		
+		<section class="welcome-section">
+	
+        <h2>Welcome to the Library Management System</h2>
+        <p>Please choose an option below:</p>
+       
+        <div class="action-buttons">
+        
+            <a href="viewbook" class="btn">View Book</a>
+            <a href="reservebook" class="btn">Reserve Book</a>
+            <a href="mybooks" class="btn">My Book</a>
+           
+            
+        
+        </div>
+        
+        
+    </section>
 
 
 

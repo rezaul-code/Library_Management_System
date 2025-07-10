@@ -33,6 +33,9 @@ public class AdminLoginServlet extends HttpServlet {
 		
 		if (adminName != null) {
 			
+			request.getSession().setAttribute("admin", adminName);
+			
+			
 			RequestDispatcher	rs = request.getRequestDispatcher("/WEB-INF/admin/admindashbord.jsp");
 			rs.forward(request, response);
 		}else {
