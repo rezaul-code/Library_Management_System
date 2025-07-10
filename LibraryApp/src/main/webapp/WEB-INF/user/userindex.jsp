@@ -21,8 +21,8 @@
        
         <div class="action-buttons">
         
-            <a href="admin" class="btn">Admin</a>
-            <a href="userindex" class="btn">User</a>
+            <a href="userlogin" class="btn">Log in</a>
+            <a href="usersignup" class="btn">Sign up</a>
         
         </div>
         

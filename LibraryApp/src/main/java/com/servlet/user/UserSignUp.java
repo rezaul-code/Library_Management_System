@@ -1,4 +1,4 @@
-package com.servlet.login;
+package com.servlet.user;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -11,27 +11,34 @@ import java.io.IOException;
 import com.service.DBService;
 import com.service.SetterGetterService;
 
-@WebServlet("/signup")
-public class SignUp extends HttpServlet {
+@WebServlet("/usersignup")
+public class UserSignUp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher rs = request.getRequestDispatcher("/WEB-INF/user/user_signup.jsp");
+		rs.forward(request, response);
 		
-		RequestDispatcher rs = request.getRequestDispatcher("/WEB-INF/signup.jsp");
-		rs.forward(request, response);	
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String username = request.getParameter("username");
+		String password = request.getParameter("password");
 		String email = request.getParameter("email");
-    	String password = request.getParameter("password");
+		String phone = request.getParameter("phone_no");
+		String fullName = request.getParameter("fullName");
+    	
+    	
     	
     	
     	SetterGetterService sg1 = new SetterGetterService();
     	sg1.setName(username);
-    	sg1.setEmail(email);
     	sg1.setPassword(password);
+    	sg1.setEmail(email);
+    	sg1.setPhoneNo(phone);
+    	sg1.setFullName(fullName);
     	
     	DBService ds = new DBService();
     	int status = ds.addUser(sg1);
@@ -39,10 +46,10 @@ public class SignUp extends HttpServlet {
     	if (status > 0) {
 			request.setAttribute("message", "Details insert successfully");
 		}else {
-			request.setAttribute("message", "Insert Failed! or Already added!");
+			request.setAttribute("message", "Insert Failed!");
 		}
-    	RequestDispatcher rs = request.getRequestDispatcher("/WEB-INF/signup.jsp");
-		rs.forward(request, response);	
+    	RequestDispatcher rs = request.getRequestDispatcher("/WEB-INF/user/user_signup.jsp");
+		rs.forward(request, response);
 	}
 
 }
