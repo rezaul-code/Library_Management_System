@@ -26,6 +26,7 @@
                     <th>Author</th>
                     <th>Category</th>
                     <th>Availability</th>
+                    <th>Reserve</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,9 +43,10 @@
                         <td>${bookvar.author}</td>
                         <td>${bookvar.category}</td>
 						<td>${bookvar.availability}</td>
+						<td><a href="reservebook" class="btn">Reserve Book</a></td>
                     </tr>
                 </c:forEach>
-                <p>Total books received: ${fn:length(booklist)}</p>
+                <p>Total books available: ${fn:length(booklist)}</p>
                 
             </tbody>
         </table>

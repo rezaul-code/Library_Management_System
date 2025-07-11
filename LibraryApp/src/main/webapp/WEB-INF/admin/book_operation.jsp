@@ -14,6 +14,7 @@
 
 <header class="site-header">
     <h1>📚 The School Library</h1>
+     <h3>${admin}</h3>
 </header>
 
 <main class="home-content">
@@ -46,8 +47,8 @@
                         <td>${bookvar.author}</td>
                         <td>${bookvar.category}</td>
 						<td>${bookvar.availability}</td>
-						<td> <a href="/update" class="btn">Update</a> </td>
-						<td><a href="/delete" class="btn">Delete</a></td>
+						<td> <a href="update" class="btn">Update</a> </td>
+						<td><a href="delete" class="btn">Delete</a></td>
                     </tr>
                 </c:forEach>
                 <p>Total books received: ${fn:length(booklist)}</p> 
