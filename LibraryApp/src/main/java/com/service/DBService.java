@@ -2,12 +2,124 @@ package com.service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.database_connection.DatabaseConnection;
 
 public class DBService {
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public List<BookDTO> getAllbookDetails() {
+	    Connection con = DatabaseConnection.getConnection();
+	    String query = QueryClass.view_book_query;
+	    List<BookDTO> bookslist = new ArrayList<>();
+
+	    try {
+	        Statement stm = con.createStatement();
+	        ResultSet rs = stm.executeQuery(query);
+
+	        while (rs.next()) {
+	        	int id = rs.getInt("id");
+	            String title = rs.getString("title");
+	            String author = rs.getString("author");
+	            String category = rs.getString("category");
+	            String availability = rs.getString("availability");
+
+	            BookDTO b2 = new BookDTO();
+	            b2.setId(id);
+	            b2.setTitle(title);
+	            b2.setAuthor(author);
+	            b2.setCategory(category);
+	            b2.setAvailability(availability);
+
+
+	            bookslist.add(b2);
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return bookslist;
+	}
+
+	
+	
+	
+	
+	
+	
+	public int adminAddBooks(BookDTO book1) {
+		Connection con = DatabaseConnection.getConnection();
+		String query_insert_book = QueryClass.insert_book_query;
+		int rows = 0;
+		
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query_insert_book);
+			ps.setInt(1, book1.getId());
+			ps.setString(2, book1.getTitle());
+			ps.setString(3, book1.getAuthor());
+			ps.setString(4, book1.getCategory());
+
+			rows = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+				
+		return rows;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public String userLoginService(String name, String pass) {
 		String name2 = null;

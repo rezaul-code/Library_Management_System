@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>user-viewBooks</title>
+    <title> Admin -viewBooks</title>
     <link rel="stylesheet" href="css/mystyle.css">
 </head>
 <body>
@@ -22,29 +22,35 @@
         <table class="styled-table">
             <thead>
                 <tr>
+                	<th>Id</th>
                     <th>Book Title</th>
                     <th>Author</th>
                     <th>Category</th>
                     <th>Availability</th>
+                    <th>update</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
-            <div>
-            	<c:if test="${empty booklist}">
+            
+            <c:if test="${empty booklist}">
    				 <tr><td colspan="4" style="color: red;">No books found or list is empty!</td></tr>
 				</c:if>
-            </div>
+           
             
             
                 <c:forEach var="bookvar" items="${booklist}">
                     <tr>
+                    	<td>${bookvar.id}</td>
                         <td>${bookvar.title}</td>
                         <td>${bookvar.author}</td>
                         <td>${bookvar.category}</td>
 						<td>${bookvar.availability}</td>
+						<td> <a href="/update" class="btn">Update</a> </td>
+						<td><a href="/delete" class="btn">Delete</a></td>
                     </tr>
                 </c:forEach>
-                <p>Total books received: ${fn:length(booklist)}</p>
+                <p>Total books received: ${fn:length(booklist)}</p> 
                 
             </tbody>
         </table>

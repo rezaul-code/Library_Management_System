@@ -1,4 +1,4 @@
-package com.servlet.user;
+package com.servlet.admin;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -12,18 +12,20 @@ import java.util.List;
 import com.service.BookDTO;
 import com.service.DBService;
 
-@WebServlet("/viewbook")
-public class UserViewBook extends HttpServlet {
+@WebServlet("/book_section")
+public class BooksSectionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+   
+   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		DBService dbs1 = new DBService();
-		List<BookDTO> bd1 = dbs1.getAllbookDetails();
-		request.setAttribute("booklist", bd1);
-				
-		RequestDispatcher rs = request.getRequestDispatcher("/WEB-INF/user/userviewbook.jsp");
-		rs.forward(request, response);
+		DBService dbs = new DBService();
+		List<BookDTO> booklist2 = dbs.getAllbookDetails();
+		request.setAttribute("booklist", booklist2 );
+		
+		 RequestDispatcher rs = request.getRequestDispatcher("/WEB-INF/admin/book_operation.jsp");
+		 rs.forward(request, response);
 	}
+
 
 }

@@ -22,12 +22,20 @@
        
         <div class="action-buttons">
         
-            <a href="addbooks" class="btn">Add Book</a>
+        <a href="book_section"  class="btn"> Books Section</a>
+        <a href="user_section" class="btn">User Section</a>       
+        
+        
+        
+        
+        
+        
+            <!-- <a href="addbooks" class="btn">Add Book</a>
             <a href="editbooks" class="btn">Edit Book</a>
             <a href="deletebooks" class="btn">Delete Book</a>
             <a href="issuebooks" class="btn">Issue/Approve Books</a>
             <a href="approveuser" class="btn">Approve User</a>
-            <a href="deleteuser" class="btn">Delete User</a>
+            <a href="deleteuser" class="btn">Delete User</a>  -->
              
             
         
