@@ -27,6 +27,7 @@ public class UserLogIn extends HttpServlet {
 		String name = request.getParameter("username");
 		String pass = request.getParameter("password");
 		
+		
 		DBService dbs = new DBService();
 		String user = dbs.userLoginService(name , pass );
 		System.out.println("User returned from DBService: " + user);

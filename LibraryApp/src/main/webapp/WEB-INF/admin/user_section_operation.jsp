@@ -23,9 +23,8 @@
        
         <div class="action-buttons">
         	<a href="issuebooks" class="btn">Issue/Approve Books</a>
-            <a href="approveuser" class="btn">Approve User</a>
-            <a href="deleteuser" class="btn">Delete User</a>
-            
+            <a href="approve_delete_user" class="btn">Approve/Delete User</a>
+         
         
         </div>
         

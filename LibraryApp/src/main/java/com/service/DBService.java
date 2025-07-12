@@ -12,14 +12,76 @@ import com.database_connection.DatabaseConnection;
 
 public class DBService {
 	
+	public int updateUser(UserDTO user) {
+	    Connection con = DatabaseConnection.getConnection();
+	    String update_user_query = QueryClass.user_update_query;
+	    int rows = 0;
+
+	    try {
+	    	
+	        PreparedStatement ps = con.prepareStatement(update_user_query);
+	        ps.setString(1, user.getStatus());
+	        ps.setInt(2, user.getId());
+	        rows = ps.executeUpdate();
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return rows;
+	}
+
 	
 	
 	
 	
 	
+	public List<UserDTO> getAllUserDetails() {
+		
+		Connection con = DatabaseConnection.getConnection();
+		String user_d_query = QueryClass.user_details_query;
+		List<UserDTO> userlist = new ArrayList<UserDTO>();
+		
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(user_d_query);
+			
+			while(rs.next()) {
+				
+				String ids = rs.getString("id");
+				int id = Integer.parseInt(ids);
+				String userName = rs.getString("username");
+				String fullName = rs.getString("name");
+				String email = rs.getString("email");
+				String phoneNo = rs.getString("phone_no");
+				String password = rs.getString("password");
+				String status = rs.getString("status");
+				
+				UserDTO user_dto = new UserDTO();
+				user_dto.setId(id);
+				user_dto.setUserName(userName);
+				user_dto.setName(fullName);
+				user_dto.setEmail(email);
+				user_dto.setPhone_no(phoneNo);
+				user_dto.setPassword(password);
+				user_dto.setStatus(status);
+				
+				userlist.add(user_dto);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return userlist;
+	}
 	
 	
 	
+
+
+
+
 	public List<BookDTO> getAllbookDetails() {
 	    Connection con = DatabaseConnection.getConnection();
 	    String query = QueryClass.view_book_query;
@@ -55,11 +117,6 @@ public class DBService {
 	}
 
 	
-	
-	
-	
-	
-	
 	public int adminAddBooks(BookDTO book1) {
 		Connection con = DatabaseConnection.getConnection();
 		String query_insert_book = QueryClass.insert_book_query;
@@ -82,43 +139,6 @@ public class DBService {
 		return rows;
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	public String userLoginService(String name, String pass) {
@@ -183,10 +203,12 @@ public String adminlogInService(String name, String pass) {
 			PreparedStatement ps = con.prepareStatement(insertQuery);
 			
 			ps.setString(1, sg1.getName());
-			ps.setString(2, sg1.getPassword());
+			ps.setString(2, sg1.getFullName());
 			ps.setString(3, sg1.getEmail());
 			ps.setString(4, sg1.getPhoneNo());
-			ps.setString(5, sg1.getFullName());
+			ps.setString(5, sg1.getPassword());
+			
+			
 			
 			rows = ps.executeUpdate();
 			

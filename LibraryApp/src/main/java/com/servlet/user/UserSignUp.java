@@ -25,20 +25,22 @@ public class UserSignUp extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		String fullName = request.getParameter("name");
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone_no");
-		String fullName = request.getParameter("fullName");
+		String password = request.getParameter("password");
     	
     	
     	
     	
     	SetterGetterService sg1 = new SetterGetterService();
     	sg1.setName(username);
-    	sg1.setPassword(password);
+    	sg1.setFullName(fullName);
     	sg1.setEmail(email);
     	sg1.setPhoneNo(phone);
-    	sg1.setFullName(fullName);
+    	sg1.setPassword(password);
+    	
+    	
     	
     	DBService ds = new DBService();
     	int status = ds.addUser(sg1);

@@ -21,13 +21,13 @@
   			
   			<input type="text" name="username"   placeholder="UserName" required="required" >
   			<br>
-  			<input type="password" name="password" placeholder="Password" required="required">
+  			<input type="text"  name="name" placeholder="Full Name" required="required">	
   			<br>
   			 <input type="email" name="email" placeholder="Email" required />
-  			<br>
-  			<input type="text" name="phone_no" placeholder="phone Number" required="required" >
-  			<br>
-  			<input type="text"  name="fullName" placeholder="Full Name" required="required">			
+  			 <br>
+  			 <input type="text" name="phone_no" placeholder="phone Number" required="required" >
+  			 <br>
+  			<input type="password" name="password" placeholder="Password" required="required">
   			<br>
   			
   			<button type="submit">Submit</button>
