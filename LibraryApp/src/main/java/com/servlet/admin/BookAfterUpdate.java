@@ -1,6 +1,5 @@
 package com.servlet.admin;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,30 +11,16 @@ import com.service.BookDTO;
 import com.service.DBService;
 
 
-@WebServlet("/delete")
-public class AdminDeleteBook extends HttpServlet {
+@WebServlet("/UpdateBookServlet")
+public class BookAfterUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-  
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String book_id = request.getParameter("id");
-		int id = Integer.parseInt(book_id);
 		
-
-		 DBService ds = new DBService();
-		int result =  ds.deleteBook(id);
-		
-		if (result>0) {
-			request.setAttribute("message", "Book delete Successfully");
-		}
-		 
-		
-		
-		
-		RequestDispatcher rs = request.getRequestDispatcher( "book_section");
-		 rs.forward(request, response);
 		
 	}
 
+	
 }

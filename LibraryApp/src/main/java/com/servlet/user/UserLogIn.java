@@ -6,6 +6,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 
 import com.service.DBService;
@@ -34,7 +36,9 @@ public class UserLogIn extends HttpServlet {
 
 		
 		if (user != null) {
-		    request.getSession().setAttribute("username", name);
+			 HttpSession hts = request.getSession();
+		    hts.setAttribute("username", name);
+		    
 		    System.out.println("Login successful");
 		    RequestDispatcher rs = request.getRequestDispatcher("/WEB-INF/user/user_dashbord.jsp");
 		    rs.forward(request, response);

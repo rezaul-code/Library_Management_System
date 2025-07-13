@@ -45,9 +45,20 @@
 						<form action="userUpdate" method="get">
 						<td>
 							<select name="status" class="btn">
+							 <option value="" disabled selected>-- Select Status --</option>
+							 
+							 <c:if test="${user.status ne 'approved' }">
 								<option value="approved">Approve</option>
+								</c:if>
+								
+								<c:if test="${user.status ne 'unapprove' }">
 								<option value="unapprove">Unapprove</option>
+								</c:if>
+								
+								<c:if test="${user.status ne 'delete' }">
 								<option value="delete">Delete</option>
+								</c:if>
+								
 							</select>
 						
 						</td>

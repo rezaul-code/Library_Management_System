@@ -10,7 +10,111 @@ import java.util.List;
 
 import com.database_connection.DatabaseConnection;
 
+import jakarta.security.auth.message.callback.PrivateKeyCallback.Request;
+
 public class DBService {
+	
+	
+	
+	public int updateBook(BookDTO book1) {
+	    String update_book = QueryClass.update_book_query;
+	    int rows = 0;
+
+	    try (Connection conn = DatabaseConnection.getConnection();
+	         PreparedStatement ps = conn.prepareStatement(update_book)) {
+
+	        ps.setString(1, book1.getTitle());
+	        ps.setString(2, book1.getAuthor());
+	        ps.setString(3, book1.getCategory());
+	        ps.setString(4, book1.getAvailability());
+	        ps.setInt(5, book1.getId());
+
+	        rows = ps.executeUpdate();
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return rows;
+	}
+
+	
+	
+	
+	public BookDTO getBookById(int id) {
+	    BookDTO book = null;
+	    String query = "SELECT * FROM Book WHERE id = ?";
+
+	    try (Connection conn = DatabaseConnection.getConnection();
+	         PreparedStatement ps = conn.prepareStatement(query)) {
+
+	        ps.setInt(1, id);
+	        ResultSet rs = ps.executeQuery();
+
+	        if (rs.next()) {
+	            book = new BookDTO();
+	            book.setId(rs.getInt("id"));
+	            book.setTitle(rs.getString("title"));
+	            book.setAuthor(rs.getString("author"));
+	            book.setCategory(rs.getString("category"));
+	            book.setAvailability(rs.getString("availability")); // expected: "yes"/"no"
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return book;
+	}
+
+	
+	
+	public int deleteBook(int id) {
+		
+		Connection conn = DatabaseConnection.getConnection();
+		String delete_book = QueryClass.delete_book_query;
+		int rows = 0;
+		
+		try {
+			PreparedStatement  ps = conn.prepareStatement(delete_book);
+			ps.setInt(1, id);
+			rows = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		
+		return rows;
+	}
+	
+	
+	
+	
+	public int deleteUser(int id) {
+		
+		Connection  con = DatabaseConnection.getConnection();
+		String delete_user = QueryClass.user_delete_query;
+		int rows = 0;
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(delete_user);
+			ps.setInt(1, id );
+			rows = ps.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return rows;
+	}
+	
+	
+	
+	
+	
+	
 	
 	public int updateUser(UserDTO user) {
 	    Connection con = DatabaseConnection.getConnection();

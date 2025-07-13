@@ -15,6 +15,7 @@
 <header class="site-header">
     <h1>📚 The School Library</h1>
      <h3>${admin}</h3>
+     
 </header>
 
 <main class="home-content">
@@ -37,6 +38,8 @@
             <c:if test="${empty booklist}">
    				 <tr><td colspan="4" style="color: red;">No books found or list is empty!</td></tr>
 				</c:if>
+				
+				<a href="addbooks" class="btn">Add Books</a>
            
             
             
@@ -47,11 +50,12 @@
                         <td>${bookvar.author}</td>
                         <td>${bookvar.category}</td>
 						<td>${bookvar.availability}</td>
-						<td> <a href="update" class="btn">Update</a> </td>
-						<td><a href="delete" class="btn">Delete</a></td>
+						<td> <a href="update?id=${bookvar.id}" class="btn">Update</a> </td>
+						<td><a href="delete?id=${bookvar.id}" class="btn">Delete</a></td>
                     </tr>
                 </c:forEach>
                 <p>Total books received: ${fn:length(booklist)}</p> 
+                <h5>${message}</h5>
                 
             </tbody>
         </table>

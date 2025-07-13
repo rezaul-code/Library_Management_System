@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Update Book</title>
+    <title>Delete Book</title>
     <link rel="stylesheet" href="css/mystyle.css">
 </head>
 <body>

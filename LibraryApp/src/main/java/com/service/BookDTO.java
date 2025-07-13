@@ -8,6 +8,9 @@ public class BookDTO {
 	private String availability;
 	private int id;
 	
+	public int getBookById(){
+		return id;
+	}
 	public int getId() {
 		return id;
 	}

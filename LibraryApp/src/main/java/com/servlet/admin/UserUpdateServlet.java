@@ -26,16 +26,30 @@ public class UserUpdateServlet extends HttpServlet {
         UserDTO user = new UserDTO();
         user.setStatus(status);
         user.setId(id);
-
+        
         DBService ds = new DBService();
-        int result = ds.updateUser(user);
+        
+        if("delete".equalsIgnoreCase(status)) {
+        	
+        	int result = ds.deleteUser(id);
+        	
+        	if(result>0) {
+        		request.setAttribute("message", "User delete successfully");
+        	}
+        	
+        }else {
+        	
+        	
+             int result = ds.updateUser(user);
 
-        if (result > 0) {
-            request.setAttribute("message", "Details updated successfully");
-        } else {
-            request.setAttribute("message", "Update Failed!");
+             if (result > 0) {
+                 request.setAttribute("message", "Details updated successfully");
+             } else {
+                 request.setAttribute("message", "Update Failed!");
+             }
+        	
         }
-
+        
         List<UserDTO> userList = ds.getAllUserDetails();
         request.setAttribute("userlist", userList);
 

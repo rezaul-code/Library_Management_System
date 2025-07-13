@@ -45,9 +45,10 @@ public class AdminAddBooks extends HttpServlet {
 		}else {
 			request.setAttribute("message", "Insert Failed!");
 		}
-		RequestDispatcher rs = request.getRequestDispatcher("/WEB-INF/admin/adminaddbooks.jsp");
-		rs.forward(request, response);	
 		
+		 
+		  response.sendRedirect(request.getContextPath() + "/book_section");
+
 	}
 
 }

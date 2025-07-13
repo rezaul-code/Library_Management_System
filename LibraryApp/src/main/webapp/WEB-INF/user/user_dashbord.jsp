@@ -10,6 +10,7 @@
 
 <header class="site-header">
     <h1>📚 The School Library</h1>
+    <h2>Welcome ${username}</h2>
 </header>
 
 <main class="home-content">

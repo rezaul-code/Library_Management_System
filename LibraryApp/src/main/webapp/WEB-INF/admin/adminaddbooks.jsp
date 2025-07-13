@@ -37,7 +37,7 @@
   			 	<option value="comics"> Comics</option>
   			 </select>
   			<br>
-        	<button type="submit">Submit</button>
+        	<button type="submit" class="btn">Submit</button>
         	  <h4>${message}</h4>
         </form>
            
