@@ -16,6 +16,157 @@ public class DBService {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public List<UserBookDTO> viewIssueBook() {
+		Connection con = DatabaseConnection.getConnection();
+		String query = QueryClass.view_pending_issue;
+		List<UserBookDTO> bookIssue = new ArrayList<UserBookDTO>();
+		try {
+			Statement stm = con.createStatement();
+			ResultSet rs = stm.executeQuery(query);
+			
+			 while (rs.next()) {
+		        	int id = rs.getInt("id");
+		        	String bookId = rs.getString("book_id");
+		        	String user = rs.getString("user_name");
+		        	String action = rs.getString("action");
+		        	
+		        	UserBookDTO issue = new UserBookDTO();
+		        	issue.setId(id);
+		        	issue.setBookId(bookId);
+		        	issue.setUser(user);
+		        	issue.setAction(action);
+		        	
+		        	bookIssue.add(issue);	
+			 }	
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return bookIssue;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+public List<UserBookDTO> getMyBookDetails(String username) {
+		
+		Connection con = DatabaseConnection.getConnection();
+		String query = QueryClass.view_my_book_query;
+		List<UserBookDTO> myBookList = new ArrayList<UserBookDTO>();
+		
+		
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			 ps.setString(1, username);
+			 
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				String bookId = rs.getString("book_id");
+				String user = rs.getString("user_name");
+				String action = rs.getString("action");
+				
+				UserBookDTO user1= new UserBookDTO();
+				user1.setId(id);
+				user1.setBookId(bookId);
+				user1.setUser(user);
+				user1.setAction(action);
+				
+				myBookList.add(user1);
+			}	 
+			 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return myBookList;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public int update_book_user(int id) {
+		
+		Connection con = DatabaseConnection.getConnection();
+		String query = QueryClass.update_book_user;
+		int rows = 0;
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, id);
+			
+			rows = ps.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return rows;
+	}
+	
+	
+	
+	
+	
+	
+	public int insertBookReserve(int bookid, String username) {
+		
+		Connection  con = DatabaseConnection.getConnection();
+		String query = QueryClass.insert_book_reserve_query;
+		int rows = 0;
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, bookid);
+			ps.setString(2, username);
+			
+			rows = ps.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return rows;
+	}
+	
+	
+	
+	
+	
+	
 	public int updateBook(BookDTO book1) {
 	    String update_book = QueryClass.update_book_query;
 	    int rows = 0;
@@ -42,10 +193,11 @@ public class DBService {
 	
 	
 	public BookDTO getBookById(int id) {
+		Connection conn = DatabaseConnection.getConnection();
 	    BookDTO book = null;
-	    String query = "SELECT * FROM Book WHERE id = ?";
+	    String query = QueryClass.get_book_by_id_query;
 
-	    try (Connection conn = DatabaseConnection.getConnection();
+	    try (
 	         PreparedStatement ps = conn.prepareStatement(query)) {
 
 	        ps.setInt(1, id);
@@ -57,7 +209,7 @@ public class DBService {
 	            book.setTitle(rs.getString("title"));
 	            book.setAuthor(rs.getString("author"));
 	            book.setCategory(rs.getString("category"));
-	            book.setAvailability(rs.getString("availability")); // expected: "yes"/"no"
+	            book.setAvailability(rs.getString("availability"));
 	        }
 
 	    } catch (SQLException e) {
@@ -67,6 +219,9 @@ public class DBService {
 	    return book;
 	}
 
+	
+	
+	
 	
 	
 	public int deleteBook(int id) {
@@ -110,6 +265,30 @@ public class DBService {
 		return rows;
 	}
 	
+	
+	
+	
+	
+	public int updateIssueBook(UserBookDTO book) {
+		
+		int rows=0;
+		Connection con = DatabaseConnection.getConnection();
+		String query = QueryClass.update_issue_book;
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, book.getAction());
+			ps.setInt(2, book.getId());
+			
+			rows= ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return rows;
+	}
 	
 	
 	
@@ -182,6 +361,9 @@ public class DBService {
 	
 	
 	
+	
+	
+	
 
 
 
@@ -220,6 +402,9 @@ public class DBService {
 	    return bookslist;
 	}
 
+	
+	
+	
 	
 	public int adminAddBooks(BookDTO book1) {
 		Connection con = DatabaseConnection.getConnection();

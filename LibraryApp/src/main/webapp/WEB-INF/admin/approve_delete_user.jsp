@@ -71,10 +71,12 @@
                 </c:forEach>
 			
 			</tbody>
+			<h2>${message}</h2>
 		
 		</table>
 				
 	</div>
+	
 	    
 </main>
 

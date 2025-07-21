@@ -29,7 +29,7 @@
                     <th>Author</th>
                     <th>Category</th>
                     <th>Availability</th>
-                    <th>update</th>
+                    <th>Update</th>
                     <th>Delete</th>
                 </tr>
             </thead>

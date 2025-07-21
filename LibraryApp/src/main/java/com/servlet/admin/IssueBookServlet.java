@@ -10,23 +10,21 @@ import java.io.IOException;
 import java.util.List;
 
 import com.service.DBService;
-import com.service.UserDTO;
+import com.service.UserBookDTO;
 
-@WebServlet("/approve_delete_user")
-public class ApproveDeleteServlet extends HttpServlet {
+@WebServlet("/issuebooks")
+public class IssueBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		DBService dbs = new DBService();
+		List<UserBookDTO> issueBook = dbs.viewIssueBook();
+		request.setAttribute("issue_pending", issueBook);
 		
-		DBService dbs1 = new DBService();
-		List<UserDTO> userlist = dbs1.getAllUserDetails();
-		request.setAttribute("userlist", userlist);
-		
-		
-		 RequestDispatcher rs = request.getRequestDispatcher("/WEB-INF/admin/approve_delete_user.jsp");
-		 rs.forward(request, response);
-		 
-		 
+		RequestDispatcher ds = request.getRequestDispatcher("/WEB-INF/admin/issue_book.jsp");
+		ds.forward(request, response);
+	
 	}
 
 	

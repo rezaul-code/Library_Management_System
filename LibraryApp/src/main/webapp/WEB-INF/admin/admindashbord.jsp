@@ -26,13 +26,9 @@
         <a href="user_section" class="btn">User Section</a>       
         
         
-        
-        
         </div>
         
-        
     </section>
-
     
 </main>
 

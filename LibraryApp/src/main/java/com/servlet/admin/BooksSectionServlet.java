@@ -27,5 +27,4 @@ public class BooksSectionServlet extends HttpServlet {
 		 rs.forward(request, response);
 	}
 
-
 }

@@ -14,6 +14,7 @@
 
 <header class="site-header">
     <h1>📚 The School Library</h1>
+    <h3>${username}</h3>
 </header>
 
 <main class="home-content">
@@ -43,10 +44,23 @@
                         <td>${bookvar.author}</td>
                         <td>${bookvar.category}</td>
 						<td>${bookvar.availability}</td>
-						<td><a href="reservebook" class="btn">Reserve Book</a></td>
-                    </tr>
+                  
+ 						<c:choose>
+ 								<c:when test ="${bookvar.availability eq 'Yes'}">
+ 								<td><a href="reservebook?id=${bookvar.id}" class="btn">Reserve Book</a></td>
+ 								</c:when>
+ 								
+ 								<c:otherwise>
+ 								<td><a class="btn disabled" style="pointer-events: none; opacity: 0.5;">Reserve Book</a></td>
+ 								</c:otherwise>
+ 						</c:choose>
+ 
+ 
+ 				 </tr>
+ 				 
                 </c:forEach>
                 <p>Total books available: ${fn:length(booklist)}</p>
+                <h2>${status}</h2>
                 
             </tbody>
         </table>

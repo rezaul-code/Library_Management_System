@@ -31,10 +31,14 @@
   			<input type="text" name="author" placeholder="Author" required="required">
   			<br>
   			 <select name="category" style="width: 170px">
-  			 	<option value="story"> Story</option>
-  			 	<option value="history"> History</option>
-  			 	<option value="science"> Science</option>
-  			 	<option value="comics"> Comics</option>
+  			 	<option value="Story"> Story</option>
+  			 	<option value="History"> History</option>
+  			 	<option value="Science"> Science</option>
+  			 	<option value="Comics"> Comics</option>
+  			 	<option value="Programming"> Programming</option>
+  			 	<option value="Arts"> Arts</option>
+  			 	<option value="Chemistry"> Chemistry</option>
+  			 	 
   			 </select>
   			<br>
         	<button type="submit" class="btn">Submit</button>

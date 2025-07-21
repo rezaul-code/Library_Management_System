@@ -23,17 +23,20 @@
 
             Category:
             <select name="category" style="width: 170px">
-                <option value="story" ${book1.category == 'story' ? 'selected' : ''}>Story</option>
-                <option value="history" ${book1.category == 'history' ? 'selected' : ''}>History</option>
-                <option value="science" ${book1.category == 'science' ? 'selected' : ''}>Science</option>
-                <option value="comics" ${book1.category == 'comics' ? 'selected' : ''}>Comics</option>
+                <option value="Story" ${book1.category == 'Story' ? 'selected' : ''}>Story</option>
+                <option value="History" ${book1.category == 'History' ? 'selected' : ''}>History</option>
+                <option value="Science" ${book1.category == 'Science' ? 'selected' : ''}>Science</option>
+                <option value="Comics" ${book1.category == 'Comics' ? 'selected' : ''}>Comics</option>
+                 <option value="Programming" ${book1.category == 'Programming' ? 'selected' : ''}>Programming</option>
+                  <option value="Arts" ${book1.category == 'Arts' ? 'selected' : ''}>Arts</option>
+                   <option value="Chemistry" ${book1.category == 'Chemistry' ? 'selected' : ''}>Chemistry</option>
             </select>
             <br><br>
 
             Availability:
             <select name="availability" style="width: 170px">
-                <option value="yes" ${book1.availability == 'yes' ? 'selected' : ''}>Yes</option>
-                <option value="no" ${book1.availability == 'no' ? 'selected' : ''}>No</option>
+                <option value="Yes" ${book1.availability == 'Yes' ? 'selected' : ''}>Yes</option>
+                <option value="No" ${book1.availability == 'No' ? 'selected' : ''}>No</option>
             </select>
             <br/><br/>
 
