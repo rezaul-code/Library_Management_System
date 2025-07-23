@@ -15,11 +15,20 @@
 <header class="site-header">
     <h1>📚 The School Library</h1>
      <h3>${admin}</h3>
+     <a href="logout" class="btnn">Logout</a>
      
 </header>
 
 <main class="home-content">
     <div class="welcome-section">
+    
+     <form action="book_section" method="get">
+    <input name="search_text" type="text" placeholder="Enter book title" value="${param.search_text}">
+    <button type="submit" class="btn">Search</button>
+	</form>
+
+     
+     
         <h2>📖 Book Details</h2>
         <table class="styled-table">
             <thead>
@@ -34,12 +43,14 @@
                 </tr>
             </thead>
             <tbody>
+           
             
             <c:if test="${empty booklist}">
    				 <tr><td colspan="4" style="color: red;">No books found or list is empty!</td></tr>
 				</c:if>
 				
 				<a href="addbooks" class="btn">Add Books</a>
+				
            
             
             

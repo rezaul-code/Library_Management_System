@@ -13,16 +13,7 @@
     <h4>${admin}</h4>
 </header>
 
-<main class="home-content">
 
-
-
-
-
-
-
-
-</main>
 
 <footer class="site-footer">
     <p>&copy; 2020–2025 The School Library. All rights reserved.</p>

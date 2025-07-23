@@ -15,21 +15,63 @@ import jakarta.security.auth.message.callback.PrivateKeyCallback.Request;
 public class DBService {
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public List<BookDTO> getSearchDetails(String text) {
+		
+		List<BookDTO> booklist = new ArrayList<BookDTO>();
+		Connection con = DatabaseConnection.getConnection();
+		String query = QueryClass.search_book_details;
+		String query2 = QueryClass.search_book_details2;
+		
+		PreparedStatement  ps = null;
+		boolean isException = false;
+		int textId =0;
+		
+		try {
+			 textId = Integer.parseInt(text);
+		}catch (NumberFormatException e) {
+			isException = true;
+		}
+		
+		try {
+			
+			if(isException) {
+				 ps = con.prepareStatement(query);
+					ps.setString(1,  text );
+					
+				
+			}else {
+				 ps = con.prepareStatement(query2);
+				 ps.setString(1,  text );	
+				 ps.setInt(2, textId);
+					
+			}
+			
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				String title = rs.getString("title");
+				String author = rs.getString("author");
+				String category = rs.getString("category");
+				String availability = rs.getString("availability");
+				int id = rs.getInt("id");
+				
+				 BookDTO book = new BookDTO();
+			    book.setId(id);
+			    book.setTitle(title);
+			    book.setAuthor(author);
+			    book.setCategory(category);
+			    book.setAvailability(availability);
+			    booklist.add(book);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return booklist;
+	}
 	
 	
 	
@@ -64,18 +106,11 @@ public class DBService {
 	
 	
 	
-	
-	
-	
-	
-	
-	
 public List<UserBookDTO> getMyBookDetails(String username) {
 		
 		Connection con = DatabaseConnection.getConnection();
 		String query = QueryClass.view_my_book_query;
 		List<UserBookDTO> myBookList = new ArrayList<UserBookDTO>();
-		
 		
 		
 		try {
@@ -107,13 +142,6 @@ public List<UserBookDTO> getMyBookDetails(String username) {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
 	public int update_book_user(int id) {
 		
 		Connection con = DatabaseConnection.getConnection();
@@ -136,9 +164,6 @@ public List<UserBookDTO> getMyBookDetails(String username) {
 	
 	
 	
-	
-	
-	
 	public int insertBookReserve(int bookid, String username) {
 		
 		Connection  con = DatabaseConnection.getConnection();
@@ -152,19 +177,12 @@ public List<UserBookDTO> getMyBookDetails(String username) {
 			
 			rows = ps.executeUpdate();
 			
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		
-		
 		return rows;
 	}
-	
-	
-	
-	
 	
 	
 	public int updateBook(BookDTO book1) {
@@ -189,7 +207,6 @@ public List<UserBookDTO> getMyBookDetails(String username) {
 	    return rows;
 	}
 
-	
 	
 	
 	public BookDTO getBookById(int id) {
@@ -220,10 +237,6 @@ public List<UserBookDTO> getMyBookDetails(String username) {
 	}
 
 	
-	
-	
-	
-	
 	public int deleteBook(int id) {
 		
 		Connection conn = DatabaseConnection.getConnection();
@@ -244,8 +257,6 @@ public List<UserBookDTO> getMyBookDetails(String username) {
 	}
 	
 	
-	
-	
 	public int deleteUser(int id) {
 		
 		Connection  con = DatabaseConnection.getConnection();
@@ -264,8 +275,6 @@ public List<UserBookDTO> getMyBookDetails(String username) {
 		
 		return rows;
 	}
-	
-	
 	
 	
 	
@@ -292,9 +301,6 @@ public List<UserBookDTO> getMyBookDetails(String username) {
 	
 	
 	
-	
-	
-	
 	public int updateUser(UserDTO user) {
 	    Connection con = DatabaseConnection.getConnection();
 	    String update_user_query = QueryClass.user_update_query;
@@ -314,9 +320,6 @@ public List<UserBookDTO> getMyBookDetails(String username) {
 	    return rows;
 	}
 
-	
-	
-	
 	
 	
 	public List<UserDTO> getAllUserDetails() {
@@ -360,15 +363,8 @@ public List<UserBookDTO> getMyBookDetails(String username) {
 	}
 	
 	
-	
-	
-	
-	
-
-
-
-
 	public List<BookDTO> getAllbookDetails() {
+		
 	    Connection con = DatabaseConnection.getConnection();
 	    String query = QueryClass.view_book_query;
 	    List<BookDTO> bookslist = new ArrayList<>();
@@ -391,7 +387,6 @@ public List<UserBookDTO> getMyBookDetails(String username) {
 	            b2.setCategory(category);
 	            b2.setAvailability(availability);
 
-
 	            bookslist.add(b2);
 	        }
 
@@ -407,6 +402,7 @@ public List<UserBookDTO> getMyBookDetails(String username) {
 	
 	
 	public int adminAddBooks(BookDTO book1) {
+		
 		Connection con = DatabaseConnection.getConnection();
 		String query_insert_book = QueryClass.insert_book_query;
 		int rows = 0;
@@ -431,6 +427,7 @@ public List<UserBookDTO> getMyBookDetails(String username) {
 	
 	
 	public String userLoginService(String name, String pass) {
+		
 		String name2 = null;
 		Connection con = DatabaseConnection.getConnection();
 		String user_check = QueryClass.user_check_query;
@@ -475,15 +472,14 @@ public String adminlogInService(String name, String pass) {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 	    return name1;
-
 	}
 	
 	
 	
 	
 	public int addUser(SetterGetterService sg1) {
+		
 		Connection con = DatabaseConnection.getConnection();
 		String insertQuery = QueryClass.insert_user_query;
 		int rows = 0;
@@ -497,8 +493,6 @@ public String adminlogInService(String name, String pass) {
 			ps.setString(4, sg1.getPhoneNo());
 			ps.setString(5, sg1.getPassword());
 			
-			
-			
 			rows = ps.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -506,6 +500,5 @@ public String adminlogInService(String name, String pass) {
 		}
 				
 		return rows;
-		
 	}
 }

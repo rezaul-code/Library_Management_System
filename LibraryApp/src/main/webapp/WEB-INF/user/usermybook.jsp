@@ -16,6 +16,7 @@
 <header class="site-header">
     <h1>📚 The School Library</h1>
     <h2>Welcome ${username}</h2>
+     <a href="logout" class="btnn">Logout</a>
 </header>
 
 <main class="home-content">
@@ -28,6 +29,7 @@
                     <th>BookId</th>
                     <th>User</th>
                     <th>Action</th>
+                    <th>Action</th>
                     
                 </tr>
             </thead>
@@ -39,6 +41,7 @@
 				        <td>${bookvar.bookId}</td>   
 				        <td>${bookvar.user}</td>
 				        <td>${bookvar.action}</td>
+				        <td><a href="return?id=${bookvar.id}" class="btn">Return</a></td>
     				</tr>
 				</c:forEach>
 

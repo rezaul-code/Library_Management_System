@@ -22,4 +22,11 @@ public class QueryClass {
 	public static String insert_book_reserve_query = "INSERT INTO book_reserve (book_id, user_name) VALUES (?, ?)";
 	
 	public static String update_issue_book = "UPDATE book_reserve SET action = ? WHERE id = ?";
+	
+	
+	public static String search_book_details = "SELECT * FROM book WHERE LOWER(title) = LOWER(?)";
+	public static String search_book_details2 = "SELECT * FROM book WHERE LOWER(title) = LOWER(?) or id = ?";
+	
+	
+	
 }

@@ -14,11 +14,21 @@
 
 <header class="site-header">
     <h1>📚 The School Library</h1>
-    <h3>${username}</h3>
+   <h2>Welcome ${username}</h2>
+     <a href="logout" class="btnn">Logout</a>
 </header>
 
 <main class="home-content">
     <div class="welcome-section">
+    
+    <form action="book_section" method="get">
+    <input name="search_text" type="text" placeholder="Enter book title" value="${param.search_text}">
+    <button type="submit" class="btn">Search</button>
+	</form>   
+    
+    
+    
+    
         <h2>📖 Book Details</h2>
         <table class="styled-table">
             <thead>

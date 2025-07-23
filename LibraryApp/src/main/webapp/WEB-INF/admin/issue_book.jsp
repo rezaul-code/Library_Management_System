@@ -16,6 +16,7 @@
 <header class="site-header">
     <h1>📚 The School Library</h1>
     <h2>Welcome ${admin}</h2>
+    <a href="logout" class="btnn">Logout</a>
 </header>
 
 <main class="home-content">

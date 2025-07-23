@@ -11,6 +11,7 @@
 <header class="site-header">
     <h1>📚 The School Library</h1>
     <h3>${admin}</h3>
+    <a href="logout" class="btnn">Logout</a>
 </header>
 
 <main class="home-content">
@@ -23,7 +24,8 @@
         <div class="action-buttons">
         
         <a href="book_section"  class="btn"> Books Section</a>
-        <a href="user_section" class="btn">User Section</a>       
+        <a href="user_section" class="btn">User Section</a>  
+             
         
         
         </div>
