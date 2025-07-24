@@ -17,6 +17,8 @@
     <h1>📚 The School Library</h1>
     <h2>Welcome ${username}</h2>
      <a href="logout" class="btnn">Logout</a>
+     <button id="theme-toggle" class="btn">🌙 Dark Mode</button>
+     
 </header>
 
 <main class="home-content">
@@ -41,18 +43,21 @@
 				        <td>${bookvar.bookId}</td>   
 				        <td>${bookvar.user}</td>
 				        <td>${bookvar.action}</td>
-				        <td><a href="return?id=${bookvar.id}" class="btn">Return</a></td>
+				        <td><a href="return?id=${bookvar.id}&bookId=${bookvar.bookId}" class="btn">Return</a></td>
     				</tr>
 				</c:forEach>
 
             </tbody>
         </table>
+        <h3>${mssg}</h3>
     </div>
 </main>
 
 <footer class="site-footer">
     <p>&copy; 2020–2025 The School Library. All rights reserved.</p>
 </footer>
+
+<script src="js/theme-toggle.js"></script>
 
 </body>
 </html>

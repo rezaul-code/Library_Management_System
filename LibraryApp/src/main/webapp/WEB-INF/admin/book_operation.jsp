@@ -7,29 +7,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Admin -viewBooks</title>
+    <title>Book Operation</title>
     <link rel="stylesheet" href="css/mystyle.css">
 </head>
+
 <body>
 
 <header class="site-header">
-    <h1>📚 The School Library</h1>
-     <h3>${admin}</h3>
-     <a href="logout" class="btnn">Logout</a>
-     
+    <div class="header-left">
+        <h1>📚 The School Library</h1>
+    </div>
+    <div class="header-center">
+        <h2>Welcome ${admin}</h2>
+    </div>
+    <div class="header-right">
+        <a href="logout" class="btnn">Logout</a>
+    </div>
+    <button id="theme-toggle" class="btn">🌙 Dark Mode</button>
+    
 </header>
+
 
 <main class="home-content">
     <div class="welcome-section">
     
-     <form action="book_section" method="get">
-    <input name="search_text" type="text" placeholder="Enter book title" value="${param.search_text}">
-    <button type="submit" class="btn">Search</button>
-	</form>
+   <div class="book-header">
+   
+    <h2>📖 Book Details</h2>
+    </div>
+    
+    <form action="book_section" method="get" class="search-form">
+        <input name="search_text" type="text" placeholder="Enter book title or id to search ...." value="${param.search_text}" class="search-input">
+        <button type="submit" class="search-button">🔍 Search</button>
+    </form>
+
 
      
      
-        <h2>📖 Book Details</h2>
+        
         <table class="styled-table">
             <thead>
                 <tr>
@@ -49,7 +64,7 @@
    				 <tr><td colspan="4" style="color: red;">No books found or list is empty!</td></tr>
 				</c:if>
 				
-				<a href="addbooks" class="btn">Add Books</a>
+				
 				
            
             
@@ -65,7 +80,12 @@
 						<td><a href="delete?id=${bookvar.id}" class="btn">Delete</a></td>
                     </tr>
                 </c:forEach>
-                <p>Total books received: ${fn:length(booklist)}</p> 
+                
+                <div class="top-bar">
+				    <a href="addbooks" class="btnnn">Add Books</a>
+				    <p class="book-count">Total books received: ${fn:length(booklist)}</p>
+				</div>
+
                 <h5>${message}</h5>
                 
             </tbody>
@@ -76,6 +96,8 @@
 <footer class="site-footer">
     <p>&copy; 2020–2025 The School Library. All rights reserved.</p>
 </footer>
+
+<script src="js/theme-toggle.js"></script>
 
 </body>
 </html>

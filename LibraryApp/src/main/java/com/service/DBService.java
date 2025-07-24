@@ -14,6 +14,54 @@ import jakarta.security.auth.message.callback.PrivateKeyCallback.Request;
 
 public class DBService {
 	
+	public int returnBookUpdate(int bookId) {
+		int rows = 0;
+		Connection con = DatabaseConnection.getConnection();
+		String query = QueryClass.return_book_update_query;
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, bookId);
+			rows = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return rows;
+	}
+	
+	
+	
+	public int returnBook(int id) {
+		
+		int rows = 0;
+		Connection con = DatabaseConnection.getConnection();
+		String query = QueryClass.return_book_query;
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, id);
+			rows = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return rows;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public List<BookDTO> getSearchDetails(String text) {
 		

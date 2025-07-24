@@ -1,4 +1,4 @@
-/* Reset and base styles */
+/* Base Reset & Layout */
 body {
     margin: 0;
     padding: 0;
@@ -14,14 +14,39 @@ body {
 .site-header {
     background-color: #004d40;
     color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
 }
 
 .site-header h1 {
     margin: 0;
-    font-size: 28px;
+    font-size: 24px;
+}
+
+.site-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: normal;
+    color: #ccc;
+}
+
+/* Logout Button */
+.btnn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+.btnn:hover {
+    background-color: #0056b3;
 }
 
 /* Footer */
@@ -30,11 +55,11 @@ body {
     color: #ccc;
     text-align: center;
     padding: 15px 0;
-    margin-top: auto;
     font-size: 14px;
+    margin-top: auto;
 }
 
-/* Main content */
+/* Main Content */
 .home-content {
     flex: 1;
     display: flex;
@@ -61,8 +86,9 @@ body {
     margin: 10px 0 30px;
     color: #666;
 }
-.adminD-section{
-	 text-align: center;
+
+.adminD-section {
+    text-align: center;
     max-width: 700px;
     background: #fff;
     padding: 40px;
@@ -70,14 +96,16 @@ body {
     box-shadow: 0 0 25px rgba(0,0,0,0.1);
 }
 
-/* Buttons */
+/* Action Buttons */
 .action-buttons {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
-.btn {
+.btn,
+.btnnn {
+    display: inline-block;
     text-decoration: none;
     padding: 12px 24px;
     background-color: #007bff;
@@ -87,8 +115,10 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.btn:hover {
+.btn:hover,
+.btnnn:hover {
     background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 .btn-secondary {
@@ -99,7 +129,52 @@ body {
     background-color: #495057;
 }
 
-/* Styled Table */
+.btnnn {
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 500;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Search Form */
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto;
+    max-width: 500px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+}
+
+.search-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+/* Table */
 .styled-table {
     width: 100%;
     border-collapse: collapse;
@@ -124,20 +199,151 @@ body {
     background-color: #f1f1f1;
 }
 
-.styled-table h2 {
+/* Top Bar */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.book-count {
+    margin: 0;
+    font-weight: 500;
     color: #004d40;
 }
 
-.btnn {
-    text-decoration: none;
-    padding: 12px 24px;
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 50%;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    
+/* Book Header */
+.book-header {
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
+/* Book Form Styling */
+.book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    margin-top: 30px;
+}
 
+.book-form input,
+.book-form select {
+    padding: 12px 16px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: #fff;
+    color: #000;
+}
 
+.book-form input:focus,
+.book-form select:focus {
+    border-color: #007bff;
+}
+
+.book-form button.btn {
+    margin-top: 10px;
+    width: 150px;
+}
+
+.form-message {
+    margin-top: 20px;
+    color: #007bff;
+    font-weight: 500;
+}
+
+/* DARK MODE */
+body.dark-mode {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+body.dark-mode .site-header,
+body.dark-mode .site-footer {
+    background-color: #1e1e1e;
+    color: #ccc;
+}
+
+body.dark-mode .welcome-section,
+body.dark-mode .adminD-section {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+body.dark-mode .book-form input,
+body.dark-mode .book-form select {
+    background-color: #2a2a2a;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+body.dark-mode label,
+body.dark-mode .book-form label {
+    color: #fff;
+}
+
+body.dark-mode .btn,
+body.dark-mode .btnn,
+body.dark-mode .btnnn,
+body.dark-mode .search-button {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+body.dark-mode .btn:hover,
+body.dark-mode .btnn:hover,
+body.dark-mode .btnnn:hover,
+body.dark-mode .search-button:hover {
+    background-color: #444;
+}
+
+body.dark-mode .search-form {
+    background-color: #2c2c2c;
+}
+
+body.dark-mode .search-input {
+    background-color: #1e1e1e;
+    color: #fff;
+    border: none;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode select option {
+    color: #ccc;
+}
+
+body.dark-mode table {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+    border-collapse: collapse;
+}
+
+body.dark-mode th,
+body.dark-mode td {
+    border: 1px solid #444;
+    padding: 8px;
+}
+
+body.dark-mode thead {
+    background-color: #333;
+}
+
+body.dark-mode table tr:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+body.dark-mode table td:hover {
+    color: #000;
+}
+
+body.dark-mode table tr {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}

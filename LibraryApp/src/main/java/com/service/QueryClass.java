@@ -27,6 +27,7 @@ public class QueryClass {
 	public static String search_book_details = "SELECT * FROM book WHERE LOWER(title) = LOWER(?)";
 	public static String search_book_details2 = "SELECT * FROM book WHERE LOWER(title) = LOWER(?) or id = ?";
 	
-	
+	public static String return_book_query = "delete from book_reserve where id =?";
+	public static String return_book_update_query = "UPDATE Book SET availability = 'Yes'  WHERE id =?";
 	
 }

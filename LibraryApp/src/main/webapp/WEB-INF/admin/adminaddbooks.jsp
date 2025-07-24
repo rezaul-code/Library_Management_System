@@ -3,19 +3,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Dashbord</title>
+    <title>Add Book</title>
     <link rel="stylesheet" href="css/mystyle.css">
 </head>
 <body>
 
 <header class="site-header">
     <h1>📚 The School Library</h1>
-    <h2>${admin}</h2>
+    <h2>Welcome ${admin}</h2> 
+    <a href="logout" class="btnn">Logout</a> 
+    <button id="theme-toggle" class="btn">🌙 Dark Mode</button>
+    
 </header>
 
 <main class="home-content">
 
-	<section class="adminD-section">
+	<section class="welcome-section">
 	
         <h2>Welcome to the Library Management System</h2>
         <p>Please add book detail's:</p>
@@ -57,6 +60,8 @@
 <footer class="site-footer">
     <p>&copy; 2020–2025 The School Library. All rights reserved.</p>
 </footer>
+
+<script src="js/theme-toggle.js"></script>
 
 </body>
 </html>

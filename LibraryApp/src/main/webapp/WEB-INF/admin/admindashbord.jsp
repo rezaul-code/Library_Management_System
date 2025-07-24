@@ -10,13 +10,17 @@
 
 <header class="site-header">
     <h1>📚 The School Library</h1>
-    <h3>${admin}</h3>
+    <h2>Welcome ${admin}</h2>
     <a href="logout" class="btnn">Logout</a>
+    <button id="theme-toggle" class="btn">🌙 Dark Mode</button>
+    
+   
+    
 </header>
 
 <main class="home-content">
 
-	<section class="adminD-section">
+	<section class="welcome-section">
 	
         <h2>Welcome to the Library Management System</h2>
         <p>Please choose an option below:</p>
@@ -37,6 +41,11 @@
 <footer class="site-footer">
     <p>&copy; 2020–2025 The School Library. All rights reserved.</p>
 </footer>
+
+</body>
+</html>
+
+<script src="js/theme-toggle.js"></script>
 
 </body>
 </html>

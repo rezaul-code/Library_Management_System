@@ -16,15 +16,18 @@
     <h1>📚 The School Library</h1>
    <h2>Welcome ${username}</h2>
      <a href="logout" class="btnn">Logout</a>
+     <button id="theme-toggle" class="btn">🌙 Dark Mode</button>
+     
 </header>
 
 <main class="home-content">
     <div class="welcome-section">
     
-    <form action="book_section" method="get">
-    <input name="search_text" type="text" placeholder="Enter book title" value="${param.search_text}">
-    <button type="submit" class="btn">Search</button>
-	</form>   
+  <form action="book_section" method="get" class="search-form">
+  <input name="search_text" type="text" placeholder="Enter book title or id to search ........" value="${param.search_text}" class="search-input">
+  <button type="submit" class="search-button">🔍 Search</button>
+</form>
+ 
     
     
     
@@ -80,6 +83,8 @@
 <footer class="site-footer">
     <p>&copy; 2020–2025 The School Library. All rights reserved.</p>
 </footer>
+
+<script src="js/theme-toggle.js"></script>
 
 </body>
 </html>

@@ -3,21 +3,31 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>issue-Books</title>
+    <title>Issue Book</title>
     <link rel="stylesheet" href="css/mystyle.css">
 </head>
+
 <body>
 
 <header class="site-header">
-    <h1>📚 The School Library</h1>
-    <h2>Welcome ${admin}</h2>
-    <a href="logout" class="btnn">Logout</a>
+    <div class="header-left">
+        <h1>📚 The School Library</h1>
+    </div>
+    <div class="header-center">
+        <h2>Welcome ${admin}</h2>
+    </div>
+    <div class="header-right">
+        <a href="logout" class="btnn">Logout</a>
+    </div>
+    <button id="theme-toggle" class="btn">🌙 Dark Mode</button>
+    
 </header>
+
+
 
 <main class="home-content">
     <div class="welcome-section">
@@ -79,6 +89,8 @@
 <footer class="site-footer">
     <p>&copy; 2020–2025 The School Library. All rights reserved.</p>
 </footer>
+
+<script src="js/theme-toggle.js"></script>
 
 </body>
 </html>
